@@ -29,12 +29,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ✅ Correct session usage
 app.use(
   session({
-    secret: "samadhanSecret",
+    secret: process.env.SESSION_SECRET || "samadhanSecret",
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/samadhaan",
+      mongoUrl: process.env.MONGODB_URI || "mongodb://localhost:27017/samadhaan",
     }),
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 1000 * 60 * 60 * 24 // 24 hours
+    }
   })
 );
 
