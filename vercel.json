@@ -13,11 +13,27 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server.js"
+      "dest": "/server.js"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/public/assets/$1"
+    },
+    {
+      "src": "/css/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)\\.(?:js|css|html|jpg|jpeg|png|svg|ico)$",
+      "dest": "/public/$1.$2"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/$1"
+      "dest": "/server.js"
     }
   ],
   "env": {
