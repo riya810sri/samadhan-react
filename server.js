@@ -33,7 +33,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI || "mongodb://localhost:27017/samadhaan",
+      mongoUrl: process.env.MONGODB_URI || "mongodb:https://cloud.mongodb.com/v2/6853fe141ee071769a2b47cc#/explorer/6853ffb7b0c893797fb77a12/samadhan",
     }),
     cookie: {
       secure: process.env.NODE_ENV === 'production',
